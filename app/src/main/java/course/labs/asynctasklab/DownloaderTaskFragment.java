@@ -28,17 +28,19 @@ public class DownloaderTaskFragment extends Fragment {
 		setRetainInstance(true);
 		
 		// TODO: Create new DownloaderTask that "downloads" data
-        new DownloaderTask().execute();
+        DownloaderTask downloaderTask = new DownloaderTask();
         
 		
 		// TODO: Retrieve arguments from DownloaderTaskFragment
 		// Prepare them for use with DownloaderTask. 
-
+         Bundle arguments = getArguments();
+         ArrayList<Integer> friendsIdArrayList = arguments.getIntegerArrayList("friends");
+         Integer[] friendIDs = friendsIdArrayList.toArray(new Integer[friendsIdArrayList.size()]);
         
         
         
 		// TODO: Start the DownloaderTask 
-		
+		downloaderTask.execute(friendIDs);
         
 
 	}
